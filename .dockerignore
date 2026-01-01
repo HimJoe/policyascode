@@ -1,0 +1,43 @@
+# Git
+.git
+.gitignore
+.github
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation (not needed in container)
+CONTRIBUTING.md
+DEPLOYMENT.md
+
+# Logs and temp files
+*.log
+logs/
+*.tmp
+temp/
+
+# Generated files (will be created in volume)
+generated_rules/
+output/
+
+# Test files
+.pytest_cache/
+.coverage
+htmlcov/

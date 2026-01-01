@@ -1,0 +1,83 @@
+graph TB
+    subgraph "User Layer"
+        UI[Web Interface<br/>Streamlit]
+        API[REST API<br/>Optional]
+        CLI[Command Line<br/>Interface]
+    end
+    
+    subgraph "Document Processing Layer"
+        PDF[PDF Processor<br/>PyPDF2]
+        EXCEL[Excel Processor<br/>openpyxl]
+        TEXT[Text Processor<br/>Built-in]
+        
+        PDF --> PARSER[Document Parser]
+        EXCEL --> PARSER
+        TEXT --> PARSER
+    end
+    
+    subgraph "Multi-Agent Governance Core"
+        MASTER[Governance Enforcer<br/>Master Agent]
+        
+        subgraph "Agent Network"
+            PA[Policy Parser<br/>Agent]
+            RG[Rule Generator<br/>Agent]
+            CV[Compliance Validator<br/>Agent]
+            AL[Audit Logger<br/>Agent]
+        end
+        
+        MASTER --> PA
+        MASTER --> RG
+        MASTER --> CV
+        MASTER --> AL
+    end
+    
+    subgraph "Rule Storage & Execution"
+        JSON[JSON Rules<br/>Export]
+        PYTHON[Python Code<br/>Generated Rules]
+        EXEC[Rule Executor<br/>Runtime]
+        
+        RG --> JSON
+        RG --> PYTHON
+        PYTHON --> EXEC
+    end
+    
+    subgraph "Data Storage"
+        RULES[(Active Rules<br/>Database)]
+        AUDIT[(Audit Trail<br/>Log Storage)]
+        
+        MASTER --> RULES
+        AL --> AUDIT
+    end
+    
+    subgraph "Enforcement & Validation"
+        VALIDATE{Compliance<br/>Validation}
+        RISK[Risk Scoring<br/>Engine]
+        DECISION{Approve or<br/>Block?}
+        
+        VALIDATE --> RISK
+        RISK --> DECISION
+    end
+    
+    UI --> PARSER
+    API --> MASTER
+    CLI --> MASTER
+    
+    PARSER --> PA
+    PA --> RG
+    RG --> RULES
+    
+    MASTER --> VALIDATE
+    EXEC --> VALIDATE
+    RULES --> VALIDATE
+    
+    DECISION -->|Approved| OUTPUT1[Execute Action]
+    DECISION -->|Blocked| OUTPUT2[Log Violation]
+    
+    OUTPUT1 --> AL
+    OUTPUT2 --> AL
+    
+    style MASTER fill:#4CAF50,stroke:#2E7D32,color:#fff
+    style DECISION fill:#FF9800,stroke:#F57C00,color:#fff
+    style VALIDATE fill:#2196F3,stroke:#1976D2,color:#fff
+    style RULES fill:#9C27B0,stroke:#7B1FA2,color:#fff
+    style AUDIT fill:#9C27B0,stroke:#7B1FA2,color:#fff

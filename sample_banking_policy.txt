@@ -1,0 +1,327 @@
+NORTH AMERICAN BANKING CORPORATION
+GOVERNANCE, RISK MANAGEMENT, AND COMPLIANCE POLICY
+
+Document Version: 3.2
+Effective Date: January 1, 2025
+Last Updated: December 15, 2024
+Document Owner: Chief Compliance Officer
+Classification: Internal Use Only
+
+================================================================================
+SECTION 1: DATA GOVERNANCE AND PROTECTION
+================================================================================
+
+1.1 CUSTOMER DATA CLASSIFICATION
+
+All customer data must be classified according to the following categories:
+- Public: Information available to general public
+- Internal: Information for internal use only
+- Confidential: Customer account and transaction data
+- Restricted: Personally identifiable information (PII) and financial records
+
+1.2 ENCRYPTION REQUIREMENTS
+
+1.2.1 All customer personally identifiable information (PII) must be encrypted 
+      at rest using AES-256 encryption or equivalent approved algorithm.
+
+1.2.2 Data in transit shall be encrypted using TLS 1.2 or higher.
+
+1.2.3 Encryption keys must be rotated every 90 days and stored in a certified
+      Hardware Security Module (HSM).
+
+1.3 DATA ACCESS CONTROLS
+
+1.3.1 Access to customer financial records requires dual authorization from 
+      both the requesting user's manager and a data steward.
+
+1.3.2 Production database access must be approved by the Information Security 
+      team and logged for audit purposes.
+
+1.3.3 Customer service representatives shall not access account numbers or 
+      social security numbers without an active support ticket.
+
+1.4 CONSENT AND PRIVACY
+
+1.4.1 Customer data shall not be processed for any purpose without explicit 
+      written or electronic consent from the customer.
+
+1.4.2 Customers must be provided with clear privacy notices explaining data 
+      collection, usage, and retention practices.
+
+1.4.3 Customer opt-out requests must be processed within 72 hours.
+
+================================================================================
+SECTION 2: TRANSACTION MONITORING AND ANTI-MONEY LAUNDERING
+================================================================================
+
+2.1 TRANSACTION THRESHOLDS
+
+2.1.1 Transactions exceeding $10,000 must be automatically flagged for 
+      Anti-Money Laundering (AML) review.
+
+2.1.2 Cash transactions exceeding $5,000 require enhanced customer 
+      identification and verification.
+
+2.1.3 High-risk transactions exceeding $50,000 must be approved by a senior 
+      compliance officer before processing.
+
+2.2 SUSPICIOUS ACTIVITY REPORTING
+
+2.2.1 Suspicious activity must be reported to the compliance team within 
+      24 hours of detection.
+
+2.2.2 Suspicious Activity Reports (SARs) must be filed with FinCEN within 
+      30 days of initial detection.
+
+2.2.3 International wire transfers to high-risk jurisdictions require 
+      additional Know Your Customer (KYC) verification.
+
+2.3 SANCTIONS SCREENING
+
+2.3.1 All transactions must be screened against OFAC sanctions lists in 
+      real-time before processing.
+
+2.3.2 Matches or potential matches must halt transaction processing pending 
+      manual review.
+
+================================================================================
+SECTION 3: DATA RETENTION AND ARCHIVAL
+================================================================================
+
+3.1 MANDATORY RETENTION PERIODS
+
+3.1.1 Transaction records must be retained for 7 years from the date of 
+      transaction as per federal banking regulations.
+
+3.1.2 Customer account opening documentation shall be retained for 10 years 
+      after account closure.
+
+3.1.3 Loan documentation must be retained for 7 years after loan payoff or 
+      charge-off.
+
+3.1.4 Audit logs and system access records must be maintained for 5 years.
+
+3.1.5 Email communications related to customer transactions must be archived 
+      for 7 years.
+
+3.2 SECURE ARCHIVAL
+
+3.2.1 Archived data must maintain the same encryption standards as active data.
+
+3.2.2 Archived records must be retrievable within 24 hours for regulatory 
+      examination requests.
+
+3.3 DATA DESTRUCTION
+
+3.3.1 Data exceeding retention periods must be securely destroyed using 
+      DOD 5220.22-M standards or equivalent.
+
+3.3.2 Data destruction activities must be logged and certified by IT security.
+
+================================================================================
+SECTION 4: INCIDENT RESPONSE AND BREACH NOTIFICATION
+================================================================================
+
+4.1 INCIDENT CLASSIFICATION
+
+4.1.1 Security incidents are classified as Low, Medium, High, or Critical 
+      based on data sensitivity and scope.
+
+4.1.2 Any incident involving customer PII or financial data is automatically 
+      classified as High or Critical.
+
+4.2 BREACH NOTIFICATION
+
+4.2.1 Data breaches involving customer information must be reported to 
+      regulatory authorities within 72 hours of discovery.
+
+4.2.2 Affected customers must be notified within 30 days of breach discovery.
+
+4.2.3 Breach notifications must include the nature of the breach, data types 
+      affected, and remediation steps.
+
+4.3 FORENSICS AND REMEDIATION
+
+4.3.1 Critical incidents require immediate forensic investigation by the 
+      cybersecurity team.
+
+4.3.2 Incident post-mortems must be completed within 14 days and shared with 
+      senior management.
+
+================================================================================
+SECTION 5: SYSTEM ACCESS AND AUTHENTICATION
+================================================================================
+
+5.1 PASSWORD POLICIES
+
+5.1.1 All user passwords must be at least 12 characters long and include 
+      uppercase, lowercase, numbers, and special characters.
+
+5.1.2 Passwords for privileged accounts shall be rotated every 90 days.
+
+5.1.3 Multi-factor authentication (MFA) is mandatory for all remote access 
+      and privileged accounts.
+
+5.2 SESSION MANAGEMENT
+
+5.2.1 User sessions must timeout after 15 minutes of inactivity.
+
+5.2.2 Concurrent logins from different locations must be flagged for 
+      security review.
+
+5.3 PRIVILEGED ACCESS
+
+5.3.1 Production system access requires just-in-time provisioning and 
+      automatic de-provisioning after 8 hours.
+
+5.3.2 All privileged access sessions must be recorded and retained for 
+      audit purposes for 1 year.
+
+================================================================================
+SECTION 6: VENDOR AND THIRD-PARTY RISK MANAGEMENT
+================================================================================
+
+6.1 VENDOR DUE DILIGENCE
+
+6.1.1 All third-party vendors with access to customer data must undergo 
+      security assessment and approval by the vendor risk management team.
+
+6.1.2 High-risk vendors require annual security audits and SOC 2 Type II 
+      certification.
+
+6.2 DATA SHARING
+
+6.2.1 All data transfers to third parties require legal review and formal 
+      data processing agreements.
+
+6.2.2 Customer data shared with vendors must be encrypted in transit and 
+      at rest.
+
+6.2.3 Vendor access to customer data must be logged and monitored in 
+      real-time.
+
+6.3 VENDOR MONITORING
+
+6.3.1 Vendor performance and security posture must be reviewed quarterly.
+
+6.3.2 Security incidents at vendor sites must be reported to our compliance 
+      team within 24 hours.
+
+================================================================================
+SECTION 7: COMPLIANCE AUDITING AND MONITORING
+================================================================================
+
+7.1 AUDIT REQUIREMENTS
+
+7.1.1 Annual compliance audits are mandatory for all systems processing 
+      customer data.
+
+7.1.2 Internal audits must be conducted by independent auditors not involved 
+      in system operations.
+
+7.1.3 Audit findings must be remediated within 90 days of discovery, with 
+      critical findings addressed within 30 days.
+
+7.2 CONTINUOUS MONITORING
+
+7.2.1 Automated compliance monitoring must be implemented for all critical 
+      controls.
+
+7.2.2 Control failures must trigger immediate alerts to the compliance team.
+
+7.2.3 Compliance metrics must be reported to the Board of Directors quarterly.
+
+7.3 POLICY ENFORCEMENT
+
+7.3.1 Policy violations must be investigated and documented.
+
+7.3.2 Repeat violations require escalation to senior management.
+
+7.3.3 Willful policy violations may result in disciplinary action up to and 
+      including termination.
+
+================================================================================
+SECTION 8: CHANGE MANAGEMENT AND SYSTEM CONTROLS
+================================================================================
+
+8.1 CHANGE APPROVAL
+
+8.1.1 All production system changes require Change Advisory Board (CAB) 
+      approval.
+
+8.1.2 Emergency changes must be retroactively reviewed within 48 hours.
+
+8.1.3 Changes affecting customer-facing systems require additional business 
+      stakeholder approval.
+
+8.2 SEGREGATION OF DUTIES
+
+8.2.1 Developers must not have production deployment privileges.
+
+8.2.2 The same individual shall not approve and execute high-risk transactions.
+
+8.2.3 Access provisioning and access review must be performed by different 
+      teams.
+
+8.3 CODE MANAGEMENT
+
+8.3.1 All code changes must undergo peer review before merging.
+
+8.3.2 Production code deployments require sign-off from QA and security teams.
+
+================================================================================
+SECTION 9: EMPLOYEE TRAINING AND AWARENESS
+================================================================================
+
+9.1 MANDATORY TRAINING
+
+9.1.1 All employees must complete annual compliance training covering data 
+      protection, AML, and security policies.
+
+9.1.2 Employees with access to customer data require additional privacy and 
+      security training.
+
+9.1.3 Training completion must be tracked and reported to compliance.
+
+9.2 SPECIALIZED TRAINING
+
+9.2.1 Compliance team members must maintain current certifications (CAMS, CRCM).
+
+9.2.2 Security team members must complete security certifications (CISSP, CISA).
+
+================================================================================
+SECTION 10: REGULATORY COMPLIANCE
+================================================================================
+
+10.1 REGULATORY FRAMEWORK
+
+This policy ensures compliance with:
+- Bank Secrecy Act (BSA)
+- USA PATRIOT Act
+- Gramm-Leach-Bliley Act (GLBA)
+- Sarbanes-Oxley Act (SOX)
+- Payment Card Industry Data Security Standard (PCI-DSS)
+- California Consumer Privacy Act (CCPA)
+- General Data Protection Regulation (GDPR) - for EU customers
+
+10.2 REGULATORY REPORTING
+
+10.2.1 All required regulatory reports must be filed accurately and on time.
+
+10.2.2 Late filings require explanation and senior management notification.
+
+10.2.3 Regulatory examination requests must be responded to within required 
+       timeframes, typically 48 hours.
+
+================================================================================
+END OF POLICY DOCUMENT
+================================================================================
+
+Approval Signatures:
+
+Chief Compliance Officer: _____________________ Date: __________
+Chief Information Security Officer: ___________ Date: __________
+Chief Risk Officer: ___________________________ Date: __________
+General Counsel: ______________________________ Date: __________
+
+Next Review Date: December 31, 2025

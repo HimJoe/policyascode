@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  grc-system:
+    build: .
+    container_name: grc-policy-as-code
+    ports:
+      - "8501:8501"
+    volumes:
+      # Persist policy files
+      - ./policies:/app/policies
+      # Persist logs
+      - ./logs:/app/logs
+      # Persist generated rules
+      - ./generated_rules:/app/generated_rules
+    environment:
+      - PYTHONUNBUFFERED=1
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Optional: Add PostgreSQL for production audit logging
+#  postgres:
+#    image: postgres:14
+#    container_name: grc-postgres
+#    environment:
+#      POSTGRES_DB: grc_audit
+#      POSTGRES_USER: grc_user
+#      POSTGRES_PASSWORD: secure_password
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#    ports:
+#      - "5432:5432"
+#    restart: unless-stopped
+
+#volumes:
+#  postgres_data:
