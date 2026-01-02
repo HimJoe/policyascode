@@ -77,6 +77,7 @@ if 'policy_name' not in st.session_state:
 
 # Header
 st.markdown('<div class="main-header">📜 Policy-to-Code Converter</div>', unsafe_allow_html=True)
+st.caption("Version 1.0.1 - Updated file handling")
 st.markdown("""
 <div class="info-box">
 <strong>Welcome!</strong> Upload your policy documents and get executable Python code instantly.
