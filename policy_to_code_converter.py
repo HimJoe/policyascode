@@ -129,13 +129,13 @@ with st.sidebar:
     st.header("📊 Statistics")
     if st.session_state.rules_generated:
         system = st.session_state.system
-        total_rules = len(system.governance_enforcer.policy_parser.parsed_rules)
+        total_rules = len(system.governance_enforcer.active_rules)
         st.metric("Total Rules Extracted", total_rules)
 
         # Count by category
         categories = {}
-        for rule in system.governance_enforcer.policy_parser.parsed_rules:
-            cat = rule.get('category', 'Unknown')
+        for rule in system.governance_enforcer.active_rules:
+            cat = rule.category  # Access attribute directly
             categories[cat] = categories.get(cat, 0) + 1
 
         for cat, count in categories.items():
@@ -238,7 +238,9 @@ with tab2:
         st.info("📤 Please upload and process a policy document first (see 'Upload Policy' tab)")
     else:
         system = st.session_state.system
-        rules = system.governance_enforcer.policy_parser.parsed_rules
+        # Get rules from active_rules and convert to dicts
+        rules_objects = system.governance_enforcer.active_rules
+        rules = [rule.to_dict() for rule in rules_objects]
 
         if not rules:
             st.warning("No rules were extracted from the document.")
