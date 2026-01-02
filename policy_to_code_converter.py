@@ -7,6 +7,8 @@ This app allows clients to:
 2. View extracted rules
 3. Download generated Python code
 4. Export rules as JSON
+
+Version: 1.0.1 - Fixed file type handling for PDF/Excel/Text
 """
 
 import streamlit as st
