@@ -8,7 +8,7 @@ This app allows clients to:
 3. Download generated Python code
 4. Export rules as JSON
 
-Version: 1.0.1 - Fixed file type handling for PDF/Excel/Text
+Version: 1.0.2 - Fixed file type handling and code generation
 """
 
 import streamlit as st
@@ -77,7 +77,7 @@ if 'policy_name' not in st.session_state:
 
 # Header
 st.markdown('<div class="main-header">📜 Policy-to-Code Converter</div>', unsafe_allow_html=True)
-st.caption("Version 1.0.1 - Updated file handling")
+st.caption("Version 1.0.2 - All systems operational ✅")
 st.markdown("""
 <div class="info-box">
 <strong>Welcome!</strong> Upload your policy documents and get executable Python code instantly.
