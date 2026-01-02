@@ -202,10 +202,10 @@ with tab1:
                     # Store policy name
                     st.session_state.policy_name = uploaded_file.name.replace('.', '_').replace(' ', '_')
 
-                    # Generate code
-                    code_generator = st.session_state.system.governance_enforcer.rule_generator
-                    python_code = code_generator.generate_python_module()
-                    json_rules = code_generator.export_to_json()
+                    # Generate code using the correct methods
+                    python_code = st.session_state.system.export_rules_python()
+                    json_rules_dict = st.session_state.system.export_rules_json()
+                    json_rules = json.dumps(json_rules_dict, indent=2)
 
                     st.session_state.generated_code = python_code
                     st.session_state.rules_json = json_rules
