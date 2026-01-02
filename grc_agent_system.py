@@ -387,13 +387,37 @@ class GovernanceEnforcer:
     
     async def load_policies(self, content: str, source: str, file_type: str) -> Dict[str, Any]:
         """Load and parse policy documents"""
-        
+
         print(f"📋 Loading policy from: {source} (type: {file_type})")
-        
+
+        # Handle different file types
+        if file_type == 'pdf':
+            # For PDF, content is bytes - extract text using PyPDF2
+            import PyPDF2
+            import io
+            pdf_reader = PyPDF2.PdfReader(io.BytesIO(content))
+            text_content = []
+            for page in pdf_reader.pages:
+                text_content.append(page.extract_text())
+            content = "\n".join(text_content)
+        elif file_type == 'excel':
+            # For Excel, content is bytes - extract text using openpyxl
+            import openpyxl
+            import io
+            workbook = openpyxl.load_workbook(io.BytesIO(content))
+            text_content = []
+            for sheet in workbook.worksheets:
+                for row in sheet.iter_rows(values_only=True):
+                    row_text = " ".join(str(cell) for cell in row if cell is not None)
+                    if row_text.strip():
+                        text_content.append(row_text)
+            content = "\n".join(text_content)
+        # else: content is already a string for text files
+
         # Parse policies
         rules = await self.policy_parser.parse_text(content, source)
         self.active_rules.extend(rules)
-        
+
         print(f"✅ Extracted {len(rules)} policy rules")
         
         # Generate rule code
