@@ -169,19 +169,27 @@ with tab1:
                     # Read file content
                     file_bytes = uploaded_file.read()
 
-                    # Determine file type
+                    # Determine file type and prepare content
                     file_extension = Path(uploaded_file.name).suffix.lower()
                     if file_extension == '.pdf':
                         file_type = 'pdf'
+                        content = file_bytes  # Keep as bytes for PDF
                     elif file_extension in ['.xlsx', '.xls']:
                         file_type = 'excel'
+                        content = file_bytes  # Keep as bytes for Excel
                     else:
                         file_type = 'text'
+                        # Decode text files to string
+                        try:
+                            content = file_bytes.decode('utf-8')
+                        except UnicodeDecodeError:
+                            # Try with different encoding
+                            content = file_bytes.decode('latin-1')
 
                     # Process the policy
                     async def process_policy():
                         return await st.session_state.system.upload_policy(
-                            content=file_bytes,
+                            content=content,
                             filename=uploaded_file.name,
                             file_type=file_type
                         )
